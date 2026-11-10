@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaf4f8">
+  <title>Snowman</title>
+  <link rel="stylesheet" href="snowman.css">
+  <script src="snowman.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Snowman home"><span class="brand-mark" aria-hidden="true">❄</span> Snowman</a>
+      <button class="text-button" id="new-game-top" type="button">New game</button>
+    </header>
+
+    <main class="game-shell" aria-label="Snowman word game">
+      <section class="game-panel">
+        <div class="panel-header">
+          <div><p class="overline" id="round-label">WORD GAME</p><h1>Save the snowman.</h1></div>
+          <div class="score" aria-label="Score"><span>Score</span><strong id="score">0</strong></div>
+        </div>
+
+        <div id="setup-view" class="setup-view">
+          <p class="lead">Guess the word before he melts.</p>
+          <h2>Choose a level</h2>
+          <div class="level-options" role="group" aria-label="Difficulty level">
+            <button class="level-card selected" type="button" data-level="easy" aria-pressed="true"><strong>Easy</strong><span>6 guesses</span></button>
+            <button class="level-card" type="button" data-level="medium" aria-pressed="false"><strong>Medium</strong><span>5 guesses</span></button>
+            <button class="level-card" type="button" data-level="hard" aria-pressed="false"><strong>Hard</strong><span>4 guesses</span></button>
+          </div>
+          <button class="primary-button start-button" id="start-button" type="button">Start game <span aria-hidden="true">→</span></button>
+        </div>
+
+        <div id="play-view" class="play-view hidden">
+          <div class="game-meta"><span id="level-tag" class="level-tag">EASY</span><span><strong id="guesses-left">6</strong> guesses left</span></div>
+          <div id="word" class="word" aria-label="Hidden word"></div>
+          <p id="message" class="message" role="status" aria-live="polite"></p>
+          <div id="playing-controls">
+            <div id="keyboard" class="keyboard" aria-label="Letter keyboard"></div>
+            <div class="input-label">Or guess the word</div>
+            <div class="word-input-row"><input id="word-input" type="text" autocapitalize="off" autocomplete="off" spellcheck="false" aria-label="Guess the whole word" placeholder="Enter a word"><button id="submit-word" type="button">Guess</button></div>
+            <button id="hint-button" class="hint-button" type="button">Use hint <span>−1 guess</span></button>
+          </div>
+          <div id="end-controls" class="end-controls hidden"><button id="bonus-button" class="primary-button" type="button">Bonus round</button><button id="finish-button" class="secondary-button" type="button">Finish</button><button id="play-again-button" class="primary-button hidden" type="button">Play again</button></div>
+        </div>
+      </section>
+
+      <aside class="scene-panel" id="scene-panel" aria-label="Snowman animation">
+        <div class="scene-snow" aria-hidden="true"></div>
+        <div class="scene-glow" aria-hidden="true"></div>
+        <div class="snowman-stage" aria-hidden="true">
+          <div class="puddle" id="puddle"></div>
+          <div class="ground-shadow"></div>
+          <div class="snowman-figure" id="snowman-figure">
+            <div class="arm arm-left"><span></span></div><div class="arm arm-right"><span></span></div>
+            <div class="snowball snowball-bottom"><i class="button-stone one"></i><i class="button-stone two"></i><i class="button-stone three"></i></div>
+            <div class="snowball snowball-middle"></div>
+            <div class="scarf-wrap"></div><div class="scarf-tail"></div>
+            <div class="snowball snowball-head"><span class="eye eye-left"></span><span class="eye eye-right"></span><span class="carrot"></span><span class="smile"></span><span class="cheek cheek-left"></span><span class="cheek cheek-right"></span></div>
+            <div class="hat-brim"></div><div class="hat-crown"><span></span></div>
+          </div>
+          <div class="melt-drop drop-one"></div><div class="melt-drop drop-two"></div><div class="melt-drop drop-three"></div>
+        </div>
+        <div class="scene-status"><span id="snowman-status">Ready</span><span class="status-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>
